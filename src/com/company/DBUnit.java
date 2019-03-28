@@ -9,14 +9,15 @@ import java.sql.Statement;
  * @author : KrisWang
  */
 public class DbUnit {
-    private static final String URL = "jdbc:mysql://localhost:3306/gc";
+    private static String URL = "jdbc:mysql://localhost:3306/";
 
     public static void main(String[] args) {
-        DbUnit db = new DbUnit("root", "1998519wyk");
+        DbUnit db = new DbUnit("root", "1998519wyk", null);
     }
-    DbUnit(String name, String password) {
+    DbUnit(String name, String password, String database) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            URL = URL + database;
             Connection conn = DriverManager.getConnection(URL, name, password);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from paper");
