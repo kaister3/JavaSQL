@@ -2,12 +2,13 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class DBOperate extends JFrame {
+/**
+ * @author : Kris Wang
+ */
+public class DbOperate extends JFrame {
 
-    private DBOperate() {
+    private DbOperate() {
         this.setTitle("Hello,SQL!");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(500, 100, 330, 200);
@@ -38,17 +39,14 @@ public class DBOperate extends JFrame {
         loginButton.setBounds(100, 100, 100, 50);
         loginButton.setFont(f);
         loginButton.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+                e -> {
 
-                        String name = usr.getText();
-                        String pass = new String(pwd.getPassword());
-                        System.out.println(name);
-                        System.out.println(pass);
+                    String name = usr.getText();
+                    String pass = new String(pwd.getPassword());
+                    System.out.println(name);
+                    System.out.println(pass);
 
-                        DBUnit data = new DBUnit(name, pass);
-                    }
+                    DbUnit data = new DbUnit(name, pass);
                 }
         );
         contentPane.add(loginButton);
@@ -59,6 +57,6 @@ public class DBOperate extends JFrame {
     }
 
     public static  void main(String[] args) {
-        DBOperate window = new DBOperate();
+        DbOperate window = new DbOperate();
     }
 }
